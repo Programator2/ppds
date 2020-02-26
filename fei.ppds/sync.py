@@ -135,7 +135,7 @@ class RandomSemaphore(FifoSemaphore):
 
 
 class Semaphore:
-    def __new__(cls, value=1, insert='fifo'):
+    def __new__(cls, value=1, insert='random'):
         subclasses = {
             'fifo': FifoSemaphore,
             'lifo': LifoSemaphore,
