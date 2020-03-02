@@ -1,5 +1,5 @@
 """
-    Author: Allen B. Downey
+    Author: Allen B. Downey, Matus Jokay, Roderik Ploszek
 
     This file contains an example program from The Little Book of
     Semaphores, available from Green Tea Press, greenteapress.com
@@ -105,6 +105,7 @@ class CustomCondition(threading.Condition):
                     pass
 
     def _insert(self, waiter):
+        """Insert waiter into the waiter queue"""
         raise NotImplementedError()
 
 
@@ -135,6 +136,9 @@ class RandomSemaphore(FifoSemaphore):
 
 
 class Semaphore:
+    """Factory class for the Semaphore objects. Uses random waiter queue by
+    default
+    """
     def __new__(cls, value=1, insert='random'):
         subclasses = {
             'fifo': FifoSemaphore,
